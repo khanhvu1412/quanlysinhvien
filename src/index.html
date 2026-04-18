@@ -2,9 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Quản lý sinh viên</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="action-student.js" type="module"></script>
 </head>
 <body>
+<header>
+    <div class="top-banner">
+        <img src="image/logo.png" alt="logo">
+        <div class="title">
+            Học viện học là trên hết
+        </div>
+    </div>
 
+    <div class="main-title">
+        QUẢN LÝ SINH VIÊN
+    </div>
+</header>
+
+
+<main class="container">
+    <!-- LEFT: FORM -->
+    <div class="left-panel">
+        <h2>Thông tin sinh viên</h2>
+
+        <form id="studentForm">
+            <label>Họ tên</label>
+            <input type="text" id="name">
+
+            <label>Năm sinh</label>
+            <input type="number" id="birthYear">
+
+            <label>Giới tính</label>
+            <select id="gender">
+                <option value="0">Nam</option>
+                <option value="1">Nữ</option>
+            </select>
+
+            <label>Lớp</label>
+            <input type="text" id="grade">
+
+            <label>Ảnh (URL)</label>
+            <input type="text" id="avatar">
+
+            <label>Khoá</label>
+            <input type="text" id="course">
+
+            <label>Trạng thái</label>
+            <select id="status">
+                <option value="0">Bảo lưu</option>
+                <option value="1">Đang học</option>
+                <option value="2">Đã học xong</option>
+            </select>
+
+            <div class="btn-group">
+                <button type="button" onclick="addStudent()">Thêm</button>
+                <button type="button" onclick="updateStudent()">Lưu</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- RIGHT: TABLE -->
+    <div class="right-panel">
+        <h2>Danh sách sinh viên</h2>
+
+        <div class="table-header">
+            <input type="text" id="searchInput" placeholder="🔍 Tìm kiếm...">
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Họ tên</th>
+                <th>Năm sinh</th>
+                <th>Giới tính</th>
+                <th>Lớp</th>
+                <th>Ảnh</th>
+                <th>Khoá</th>
+                <th>Trạng thái</th>
+                <th colspan="2" rowspan="2" >Hành động</th>
+            </tr>
+            </thead>
+
+            <tbody id="studentTable"></tbody>
+        </table>
+        <div class="pagination">
+            <button onclick="previousPage()">Previous</button>
+
+            <!-- input nhập trang -->
+            <input
+                    type="number"
+                    id="currentPage"
+                    value="1"
+                    min="1"
+                    style="width: 40px; text-align: center;"
+                    oninput="goToPage()"
+                    class="input-page"
+            >
+
+            <!-- tổng số trang -->
+<!--            <span>/ <span id="totalPage"></span></span>-->
+
+            <button onclick="nextPage()">Next</button>
+        </div>
+    </div>
+</main>
+
+<footer>
+    © 2026 - Hệ thống quản lý sinh viên | Developed by DoVu 😄
+</footer>
 </body>
 </html>
