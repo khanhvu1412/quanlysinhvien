@@ -154,18 +154,36 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 /* RIGHT */
+/*.right-panel {*/
+/*    width: 70%;*/
+/*    height: 800px;*/
+/*    border: 1px solid #e0e0e0;*/
+/*    padding: 20px;*/
+/*    background-color: #fff;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);*/
+/*    overflow: hidden;*/
+
+/*   */
+/*}*/
+
 .right-panel {
     width: 70%;
     height: 800px;
+
+    display: flex;              /* 🔥 quan trọng */
+    flex-direction: column;     /* chia dọc */
+
     border: 1px solid #e0e0e0;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
+}
 
-    max-height: 800px;
-    overflow-y: scroll;
+.table-container {
+    flex: 1;              /* 🔥 chiếm hết phần còn lại */
+    overflow-y: auto;     /* scroll ở đây */
 }
 
 .right-panel h2 {
@@ -209,8 +227,8 @@ table tr:hover {
 }
 
 table img {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
     border-radius: 6px;
     object-fit: cover;
 }
@@ -250,6 +268,14 @@ table img {
 .table-header select:hover {
     border-color: #007bff;
 }
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-style: italic;
+}
+
 
 /* BUTTON */
 .btn-edit {

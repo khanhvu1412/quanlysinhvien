@@ -76,29 +76,32 @@
             </select>
 
             <select id="searchGender">
-                <option value="">Tất cả</option>
+                <option value="">Tất cả giới tính</option>
                 <option value="0">Nam</option>
                 <option value="1">Nữ</option>
             </select>
         </div>
 
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Họ tên</th>
-                <th>Năm sinh</th>
-                <th>Giới tính</th>
-                <th>Lớp</th>
-                <th>Ảnh</th>
-                <th>Khoá</th>
-                <th>Trạng thái</th>
-                <th colspan="2" rowspan="2">Hành động</th>
-            </tr>
-            </thead>
+        <div class="table-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Họ tên</th>
+                    <th>Năm sinh</th>
+                    <th>Giới tính</th>
+                    <th>Lớp</th>
+                    <th>Ảnh</th>
+                    <th>Khoá</th>
+                    <th>Trạng thái</th>
+                    <th colspan="2" rowspan="2">Hành động</th>
+                </tr>
+                </thead>
 
-            <tbody id="studentTable"></tbody>
-        </table>
+                <tbody id="studentTable"></tbody>
+            </table>
+        </div>
+
         <div class="pagination">
             <button onclick="previousPage()">Previous</button>
 
@@ -119,11 +122,12 @@
             <button onclick="nextPage()">Next</button>
         </div>
     </div>
+
 </main>
 
 <footer>
     © 2026 - Hệ thống quản lý sinh viên | Developed by DoVu 😄
 </footer>
-<script src="action-student.js" type="module"></script>
+<script src="js/action-student.js" type="module"></script>
 </body>
 </html>

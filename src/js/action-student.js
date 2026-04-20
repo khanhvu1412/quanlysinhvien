@@ -1,10 +1,10 @@
-import student_data from "./resource/database/student.json" with {type: "json"};
+import {loadData, saveData} from "./student-service.js";
 
-let studentRepo = [...student_data];
+let studentRepo = loadData();
 let filteredData = [...studentRepo];
 
 let currentPage = 1;
-let pageSize = 5;
+let pageSize = 6;
 
 
 function renderStudentList(studentRepo) {
@@ -144,6 +144,19 @@ function searchStudent() {
         return matchKeyword && matchStatus && matchGender;
     });
 
+    if (!filteredData || filteredData.length === 0) {
+        let message = `❌ Không tìm thấy kết quả cho "<b>${keyword}</b>"`;
+
+        document.getElementById("studentTable").innerHTML = `
+            <tr>
+                <td colspan="10" class="no-data">
+                    ${message}
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
     currentPage = 1;
     renderStudentList(filteredData);
     updatePaginationInfo();
@@ -175,9 +188,11 @@ function addStudent() {
             "status": parseInt(status),
         }
     )
+    saveData(studentRepo);
 
     renderStudentList(studentRepo);
     updatePaginationInfo();
+    window.location.reload();
 
     document.getElementById("studentForm").reset();
 }
@@ -191,7 +206,7 @@ function deleteStudentById(id) {
             break;
         }
     }
-
+    saveData(studentRepo);
     renderStudentList(studentRepo);
     updatePaginationInfo();
 }
@@ -238,6 +253,7 @@ function updateStudent() {
         }
     }
     currentId = null;
+    saveData(studentRepo);
     renderStudentList(studentRepo);
     updatePaginationInfo();
     document.getElementById("studentForm").reset();
