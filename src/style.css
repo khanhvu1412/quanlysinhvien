@@ -57,7 +57,7 @@ input[type=number]::-webkit-inner-spin-button {
     padding: 20px;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .left-panel h2 {
@@ -94,7 +94,7 @@ input[type=number]::-webkit-inner-spin-button {
 .left-panel input:focus,
 .left-panel select:focus {
     border-color: #409eff;
-    box-shadow: 0 0 5px rgba(64,158,255,0.3);
+    box-shadow: 0 0 5px rgba(64, 158, 255, 0.3);
 }
 
 /* FILE INPUT */
@@ -163,6 +163,9 @@ input[type=number]::-webkit-inner-spin-button {
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     overflow: hidden;
+
+    max-height: 800px;
+    overflow-y: scroll;
 }
 
 .right-panel h2 {
@@ -214,24 +217,38 @@ table img {
 
 /* HEADER SEARCH */
 .table-header {
+    gap: 10px;
     margin-bottom: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
+/* Input search */
 .table-header input {
+    flex: 1; /* chiếm nhiều không gian */
+    max-width: 300px;
     padding: 8px 12px;
-    width: 250px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 6px;
     outline: none;
     transition: 0.2s;
 }
 
 .table-header input:focus {
-    border-color: #409eff;
-    box-shadow: 0 0 5px rgba(64, 158, 255, 0.3);
+    border-color: #007bff;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+/* Select */
+.table-header select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.table-header select:hover {
+    border-color: #007bff;
 }
 
 /* BUTTON */

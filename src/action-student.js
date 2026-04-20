@@ -1,9 +1,11 @@
 import student_data from "./resource/database/student.json" with {type: "json"};
 
 let studentRepo = [...student_data];
+let filteredData = [...studentRepo];
 
 let currentPage = 1;
 let pageSize = 5;
+
 
 function renderStudentList(studentRepo) {
     let studentTable = document.getElementById("studentTable");
@@ -33,6 +35,7 @@ function renderStudentList(studentRepo) {
     studentTable.innerHTML = content;
 
     document.getElementById("currentPage").value = currentPage;
+    updatePaginationInfo();
 }
 
 function getGender(gen) {
@@ -51,10 +54,17 @@ function getSatus(status) {
 }
 
 // ================ Pagination ==================
+function updatePaginationInfo() {
+    let totalPage = Math.ceil(filteredData.length / pageSize) || 1;
+
+    document.getElementById("totalPage").innerText = totalPage;
+}
+
 function previousPage() {
     if (currentPage > 1) {
         currentPage--;
-        renderStudentList(studentRepo);
+        renderStudentList(filteredData);
+        updatePaginationInfo();
     }
 }
 
@@ -64,10 +74,9 @@ function goToPage() {
 
     if (page >= 1 && page <= totalPage) {
         currentPage = page;
-        renderStudentList(studentRepo);
+        renderStudentList(filteredData);
+        updatePaginationInfo();
     }
-    console.log(totalPage);
-
 }
 
 function nextPage() {
@@ -75,11 +84,70 @@ function nextPage() {
 
     if (currentPage < totalPage) {
         currentPage++;
-        renderStudentList(studentRepo);
+        renderStudentList(filteredData);
+        updatePaginationInfo();
     }
+
+    document.querySelector("button[onclick='nextPage()']").disable = currentPage >= totalPage;
 }
 
 // ================ Search ==================
+function debounce(fn, delay) {
+    let timeout;
+
+    return function (...args) {
+        clearTimeout(timeout);
+
+        timeout = setTimeout(() => {
+            fn.apply(this, args);
+        }, delay);
+    }
+}
+
+// Hàm xoá dấu
+function removeVietnameseTones(str) {
+    return str.toString()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/đ/g, "d")
+        .replace(/Đ/g, "D")
+        .toLowerCase();
+}
+
+const debounceSearch = debounce(() => {
+    searchStudent();
+}, 500);
+
+document.getElementById("searchInput").addEventListener("input", debounceSearch);
+document.getElementById("searchStatus").addEventListener("change", searchStudent);
+document.getElementById("searchGender").addEventListener("change", searchStudent);
+
+function searchStudent() {
+    let keyword = document.getElementById("searchInput").value;
+    let status = document.getElementById("searchStatus").value;
+    let gender = document.getElementById("searchGender").value;
+
+    keyword = removeVietnameseTones(keyword.trim());
+
+    filteredData = studentRepo.filter(student => {
+        let matchKeyword =
+            !keyword ||
+            removeVietnameseTones(student.name).includes(keyword) ||
+            removeVietnameseTones(student.birthYear).includes(keyword) ||
+            removeVietnameseTones(student.grade).includes(keyword) ||
+            removeVietnameseTones(student.course).includes(keyword);
+
+        let matchStatus = status === "" || student.status == status;
+
+        let matchGender = gender === "" || student.gender == gender;
+
+        return matchKeyword && matchStatus && matchGender;
+    });
+
+    currentPage = 1;
+    renderStudentList(filteredData);
+    updatePaginationInfo();
+}
 
 // ================= Add ====================
 function addStudent() {
@@ -109,6 +177,7 @@ function addStudent() {
     )
 
     renderStudentList(studentRepo);
+    updatePaginationInfo();
 
     document.getElementById("studentForm").reset();
 }
@@ -124,6 +193,7 @@ function deleteStudentById(id) {
     }
 
     renderStudentList(studentRepo);
+    updatePaginationInfo();
 }
 
 // ================= Update =================
@@ -169,15 +239,18 @@ function updateStudent() {
     }
     currentId = null;
     renderStudentList(studentRepo);
+    updatePaginationInfo();
     document.getElementById("studentForm").reset();
 }
 
 
 // ================= Action =================
+window.updatePaginationInfo = updatePaginationInfo;
 window.previousPage = previousPage;
 window.goToPage = goToPage;
 window.nextPage = nextPage;
 
+window.searchStudent = searchStudent;
 window.addStudent = addStudent;
 window.updateStudent = updateStudent;
 window.updateStudentById = updateStudentById;

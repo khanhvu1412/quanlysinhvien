@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Quản lý sinh viên</title>
     <link rel="stylesheet" href="style.css">
-    <script src="action-student.js" type="module"></script>
 </head>
 <body>
 <header>
@@ -68,6 +67,19 @@
 
         <div class="table-header">
             <input type="text" id="searchInput" placeholder="🔍 Tìm kiếm...">
+
+            <select id="searchStatus">
+                <option value="">Tất cả trạng thái</option>
+                <option value="0">Bảo lưu</option>
+                <option value="1">Đang học</option>
+                <option value="2">Đã học xong</option>
+            </select>
+
+            <select id="searchGender">
+                <option value="">Tất cả</option>
+                <option value="0">Nam</option>
+                <option value="1">Nữ</option>
+            </select>
         </div>
 
         <table>
@@ -81,7 +93,7 @@
                 <th>Ảnh</th>
                 <th>Khoá</th>
                 <th>Trạng thái</th>
-                <th colspan="2" rowspan="2" >Hành động</th>
+                <th colspan="2" rowspan="2">Hành động</th>
             </tr>
             </thead>
 
@@ -102,7 +114,7 @@
             >
 
             <!-- tổng số trang -->
-<!--            <span>/ <span id="totalPage"></span></span>-->
+            <span>/ <span id="totalPage"></span></span>
 
             <button onclick="nextPage()">Next</button>
         </div>
@@ -112,5 +124,6 @@
 <footer>
     © 2026 - Hệ thống quản lý sinh viên | Developed by DoVu 😄
 </footer>
+<script src="action-student.js" type="module"></script>
 </body>
 </html>
