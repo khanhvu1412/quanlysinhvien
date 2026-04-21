@@ -154,25 +154,13 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 /* RIGHT */
-/*.right-panel {*/
-/*    width: 70%;*/
-/*    height: 800px;*/
-/*    border: 1px solid #e0e0e0;*/
-/*    padding: 20px;*/
-/*    background-color: #fff;*/
-/*    border-radius: 10px;*/
-/*    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);*/
-/*    overflow: hidden;*/
-
-/*   */
-/*}*/
 
 .right-panel {
     width: 70%;
     height: 800px;
 
-    display: flex;              /* 🔥 quan trọng */
-    flex-direction: column;     /* chia dọc */
+    display: flex;
+    flex-direction: column;
 
     border: 1px solid #e0e0e0;
     padding: 20px;
@@ -182,8 +170,8 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .table-container {
-    flex: 1;              /* 🔥 chiếm hết phần còn lại */
-    overflow-y: auto;     /* scroll ở đây */
+    flex: 1;
+    overflow-y: auto;
 }
 
 .right-panel h2 {
@@ -306,6 +294,18 @@ table img {
     cursor: pointer;
     transform: scale(1.05);
     background-color: #d9363e;
+}
+
+.btn-edit:disabled {
+    cursor: not-allowed;
+    transform: none;
+    background-color: #757575;
+}
+
+.btn-del:disabled {
+    cursor: not-allowed;
+    transform: none;
+    background-color: #757575;
 }
 
 /* PAGINATION */

@@ -55,8 +55,8 @@
             </select>
 
             <div class="btn-group">
-                <button type="button" onclick="addStudent()">Thêm</button>
-                <button type="button" onclick="updateStudent()">Lưu</button>
+                <button type="button" id="btnAdd" onclick="addStudent()">Thêm</button>
+                <button type="button" id="btnUpdate" onclick="updateStudent()">Lưu</button>
             </div>
         </form>
     </div>
@@ -103,7 +103,7 @@
         </div>
 
         <div class="pagination">
-            <button onclick="previousPage()">Previous</button>
+            <button id="btnPrev" onclick="previousPage()">Previous</button>
 
             <!-- input nhập trang -->
             <input
@@ -119,7 +119,7 @@
             <!-- tổng số trang -->
             <span>/ <span id="totalPage"></span></span>
 
-            <button onclick="nextPage()">Next</button>
+            <button id="btnNext" onclick="nextPage()">Next</button>
         </div>
     </div>
 
@@ -128,6 +128,6 @@
 <footer>
     © 2026 - Hệ thống quản lý sinh viên | Developed by DoVu 😄
 </footer>
-<script src="js/action-student.js" type="module"></script>
+<script src="js/event.js" type="module"></script>
 </body>
 </html>

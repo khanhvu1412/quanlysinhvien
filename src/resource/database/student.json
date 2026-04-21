@@ -9,17 +9,5 @@
   { "id": 7, "name": "Trần Văn Nam", "birthYear": 2000, "gender": 0, "grade": "KT03", "avatar": "https://i.pravatar.cc/150?img=7", "course": "2019-2023", "status": 2 },
   { "id": 8, "name": "Lê Thị Mai", "birthYear": 2003, "gender": 1, "grade": "QTKD01", "avatar": "https://i.pravatar.cc/150?img=8", "course": "2022-2026", "status": 1 },
   { "id": 9, "name": "Phạm Văn Long", "birthYear": 2002, "gender": 0, "grade": "CNTT04", "avatar": "https://i.pravatar.cc/150?img=9", "course": "2020-2024", "status": 0 },
-  { "id": 10, "name": "Hoàng Thị Hoa", "birthYear": 2001, "gender": 1, "grade": "KT04", "avatar": "https://i.pravatar.cc/150?img=10", "course": "2019-2023", "status": 2 },
-
-  { "id": 11, "name": "Nguyễn Văn Đức", "birthYear": 2000, "gender": 0, "grade": "CNTT05", "avatar": "https://i.pravatar.cc/150?img=11", "course": "2018-2022", "status": 2 },
-  { "id": 12, "name": "Trần Thị Hạnh", "birthYear": 2002, "gender": 1, "grade": "QTKD02", "avatar": "https://i.pravatar.cc/150?img=12", "course": "2020-2024", "status": 1 },
-  { "id": 13, "name": "Lê Văn Sơn", "birthYear": 2001, "gender": 0, "grade": "KT05", "avatar": "https://i.pravatar.cc/150?img=13", "course": "2019-2023", "status": 0 },
-  { "id": 14, "name": "Phạm Thị Trang", "birthYear": 2003, "gender": 1, "grade": "CNTT06", "avatar": "https://i.pravatar.cc/150?img=14", "course": "2022-2026", "status": 1 },
-  { "id": 15, "name": "Hoàng Văn Phúc", "birthYear": 2002, "gender": 0, "grade": "QTKD04", "avatar": "https://i.pravatar.cc/150?img=15", "course": "2021-2025", "status": 2 },
-
-  { "id": 16, "name": "Nguyễn Thị Yến", "birthYear": 2004, "gender": 1, "grade": "KT06", "avatar": "https://i.pravatar.cc/150?img=16", "course": "2023-2027", "status": 1 },
-  { "id": 17, "name": "Trần Văn Hùng", "birthYear": 2001, "gender": 0, "grade": "CNTT07", "avatar": "https://i.pravatar.cc/150?img=17", "course": "2020-2024", "status": 0 },
-  { "id": 18, "name": "Lê Thị Nhung", "birthYear": 2002, "gender": 1, "grade": "QTKD05", "avatar": "https://i.pravatar.cc/150?img=18", "course": "2021-2025", "status": 2 },
-  { "id": 19, "name": "Phạm Văn Tài", "birthYear": 2000, "gender": 0, "grade": "KT07", "avatar": "https://i.pravatar.cc/150?img=19", "course": "2018-2022", "status": 2 },
-  { "id": 20, "name": "Hoàng Thị Linh", "birthYear": 2003, "gender": 1, "grade": "CNTT08", "avatar": "https://i.pravatar.cc/150?img=20", "course": "2022-2026", "status": 1 }
+  { "id": 10, "name": "Hoàng Thị Hoa", "birthYear": 2001, "gender": 1, "grade": "KT04", "avatar": "https://i.pravatar.cc/150?img=10", "course": "2019-2023", "status": 2 }
 ]
