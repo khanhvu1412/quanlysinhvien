@@ -27,3 +27,44 @@ export function debounce(fn, delay = 500) {
         }, delay);
     }
 }
+
+export function showToast(message, type = "success") {
+    const toastContailer = document.getElementById("toast");
+
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+
+    switch (type) {
+        case "success":
+            break;
+        case "warning":
+            break;
+    }
+
+    toast.innerHTML = `${message}`;
+
+    toastContailer.appendChild(toast);
+
+    setTimeout(() => {
+        toast.remove()
+    }, 3000);
+}
+
+export function showError(inputId, errorId, message) {
+    document.getElementById(inputId).style.borderColor = "red";
+    document.getElementById(errorId).innerText = message;
+}
+
+export function clearError(inputId, errorId) {
+    document.getElementById(inputId).style.borderColor = "#ccc";
+    document.getElementById(errorId).innerText = "";
+}
+
+
+export function showConfirmModal() {
+    document.getElementById("confirmModal").style.display = "flex";
+}
+
+export function closeModal() {
+    document.getElementById("confirmModal").style.display = "none";
+}

@@ -1,6 +1,6 @@
 import StudentController from "./controllers/student.controller.js";
 import Students from "./models/Students.js";
-import {getGender, getSatus} from "./utils/helper.js";
+import {getGender, getSatus, showToast, showError, clearError, showConfirmModal, closeModal} from "./utils/helper.js";
 
 const studentForm = document.getElementById("studentForm");
 const controller = new StudentController();
@@ -43,14 +43,53 @@ export function render() {
 }
 
 // ===================== Add ==========================
+function validateStudent() {
+    let isValid = true;
+
+    clearError("name", "validateName");
+    clearError("birthYear", "validateBirthYear");
+    clearError("grade", "validateGrade");
+    clearError("course", "validateCourse");
+
+    if (!nameInput.value.trim()) {
+        showError("name", "validateName", "Bạn phải nhập tên!");
+        isValid = false;
+    }
+
+    if (!birthYearInput.value.trim()) {
+        showError("birthYear", "validateBirthYear", "Bạn phải nhập năm sinh!");
+        isValid = false;
+    }
+
+    if (!gradeInput.value.trim()) {
+        showError("grade", "validateGrade", "Bạn phải nhập lớp!");
+        isValid = false;
+    }
+
+    if (!courseInput.value.trim()) {
+        showError("course", "validateCourse", "Bạn phải nhập khoá!");
+        isValid = false;
+    }
+
+    return isValid;
+
+}
+
 export function addStudent() {
+    if (!validateStudent()) {
+        showToast("Bạn phải nhập đầy đủ thông tin!", "warning");
+        return;
+    }
+
+    let avatar = avatarInput.value.trim() || "https://surl.li/ijoewd"
+
     let student = new Students(
         null,
         nameInput.value,
         birthYearInput.value,
         Number(genderInput.value),
         gradeInput.value,
-        avatarInput.value,
+        avatar,
         courseInput.value,
         Number(statusInput.value)
     );
@@ -59,6 +98,7 @@ export function addStudent() {
     controller.filtered = [...controller.students];
 
     render();
+    showToast("Bạn đã thêm sinh viên thành công!", "success");
     studentForm.reset();
 }
 
@@ -89,6 +129,10 @@ export function updateId(id) {
 // ===================== Update =========================
 export function updateStudent() {
     if (!currentId) return;
+    if (!validateStudent()) {
+        showToast("Bạn phải nhập đầy đủ thông tin!", "warning");
+        return;
+    }
 
     controller.update(currentId, {
         name: nameInput.value,
@@ -104,6 +148,8 @@ export function updateStudent() {
     currentId = null;
 
     render();
+    showToast("Bạn đã cập nhật sinh viên thành công!", "success");
+
     studentForm.reset();
 
     btnAdd.disabled = false;
@@ -115,12 +161,26 @@ export function updateStudent() {
 
 // ===================== Delete =========================
 export function deleteStudent(id) {
-    if (!confirm(`Bạn có chắc muốn xoá dữ liệu này không?`)) return;
+    showConfirmModal();
 
-    controller.delete(id);
-    controller.filtered = [...controller.students];
-    render();
+    let student = controller.students.find(s => s.id == id);
+
+    document.getElementById("modalMessage").innerHTML = `Bạn có chắc muốn xoá học sinh <br> <b>${student.name}</b>`;
+
+    document.getElementById("btnConfirmYes").onclick = () => {
+        if (id !== null) {
+            controller.delete(id);
+            controller.filtered = [...controller.students];
+            showToast("Bạn đã xoá thành công!", "success");
+            render();
+        }
+
+        closeModal();
+    }
+
+    document.getElementById("btnConfirmNo").onclick = closeModal;
 }
+
 
 // ===================== Search =========================
 export function searchStudent() {

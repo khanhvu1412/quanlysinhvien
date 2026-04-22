@@ -1,5 +1,5 @@
 import {debounce} from "./utils/helper.js";
-import { render, addStudent, updateId, updateStudent, deleteStudent, searchStudent, previousPage, goToPage, nextPage } from "./main.js";
+import { render, searchStudent, addStudent, updateId, updateStudent, deleteStudent , previousPage, goToPage, nextPage } from "./main.js";
 
 const debounceSearch = debounce(searchStudent, 500);
 document.getElementById("searchInput").addEventListener("input", debounceSearch);
@@ -11,10 +11,10 @@ window.searchStudent = searchStudent;
 window.addStudent = addStudent;
 window.updateId = updateId;
 window.updateStudent = updateStudent;
+window.deleteStudent = deleteStudent;
 
 window.previousPage = previousPage
 window.goToPage = goToPage
 window.nextPage = nextPage
 
-window.deleteStudent = deleteStudent;
 render();

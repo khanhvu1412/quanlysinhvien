@@ -26,11 +26,14 @@
         <h2>Thông tin sinh viên</h2>
 
         <form id="studentForm">
-            <label>Họ tên</label>
+            <label>Họ tên <span style="color: red">*</span> </label>
             <input type="text" id="name">
+            <span class="mess" id="validateName"></span>
 
-            <label>Năm sinh</label>
+            <label>Năm sinh <span style="color: red">*</span> </label>
             <input type="number" id="birthYear">
+            <span class="mess" id="validateBirthYear"></span>
+
 
             <label>Giới tính</label>
             <select id="gender">
@@ -38,14 +41,19 @@
                 <option value="1">Nữ</option>
             </select>
 
-            <label>Lớp</label>
+            <label>Lớp <span style="color: red">*</span> </label>
             <input type="text" id="grade">
+            <span class="mess" id="validateGrade"></span>
+
 
             <label>Ảnh (URL)</label>
             <input type="text" id="avatar">
 
-            <label>Khoá</label>
+
+            <label>Khoá <span style="color: red">*</span> </label>
             <input type="text" id="course">
+            <span class="mess" id="validateCourse"></span>
+
 
             <label>Trạng thái</label>
             <select id="status">
@@ -55,8 +63,8 @@
             </select>
 
             <div class="btn-group">
-                <button type="button" id="btnAdd" onclick="addStudent()">Thêm</button>
-                <button type="button" id="btnUpdate" onclick="updateStudent()">Lưu</button>
+                <button type="button" id="btnAdd" class="btn-add" onclick="addStudent()">Thêm</button>
+                <button type="button" id="btnUpdate" class="btn-update" onclick="updateStudent()">Lưu</button>
             </div>
         </form>
     </div>
@@ -129,5 +137,16 @@
     © 2026 - Hệ thống quản lý sinh viên | Developed by DoVu 😄
 </footer>
 <script src="js/event.js" type="module"></script>
+<div id="toast"></div>
+<div id="confirmModal" class="modal">
+    <div class="modal-content">
+        <h3 class="title-modal">Xoá học sinh</h3>
+        <p id="modalMessage" class="modal-message"></p>
+        <div class="modal-actions">
+            <button id="btnConfirmYes">Xoá</button>
+            <button id="btnConfirmNo">Huỷ</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
